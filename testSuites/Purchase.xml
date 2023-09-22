@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite parallel="tests" name="Purchase Suite">
+    <groups>
+        <run>
+            <include name="Purchase"/>
+        </run>
+    </groups>
+    <test verbose="2" preserve-order="true" name="EndToEndTest">
+        <classes>
+            <class name="Tests.EndToEndTest">
+                <methods>
+                    <include name="endToEndTest"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+</suite>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite parallel="classes" name="All Test Suite">
+    <listeners>
+        <listener class-name="TestComponents.Listeners"></listener>
+    </listeners>
+    <test verbose="2" preserve-order="true" name="D:/Kelly/SeleniumTest">
+        <classes>
+            <class name="Tests.EndToEndTest">
+                <methods>
+                    <include name="submitOrder"/>
+                </methods>
+            </class>
+            <class name="Tests.LoginPageNegativeValidation">
+                <methods>
+                    <include name="invalidEmailValidation"/>
+                    <include name="invalidPasswordlValidation"/>
+                    <include name="invalidEmailAndPassword"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+</suite>

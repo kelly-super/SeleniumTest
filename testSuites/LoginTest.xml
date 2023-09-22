@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite parallel="tests" name="All Test Suite">
+    <groups>
+        <run>
+            <include name="errorValidation"/>
+        </run>
+    </groups>
+    <test verbose="2" preserve-order="true" name="EndToEndTest">
+        <classes>
+            <class name="Tests.EndToEndTest">
+                <methods>
+                    <include name="endToEndTest"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+    <test verbose="2" preserve-order="true" name="LoginInvalidTest">
+        <classes>
+            <class name="Tests.LoginPageNegativeValidation">
+                <methods>
+                    <include name="invalidEmailValidation"/>
+                    <include name="invalidPasswordlValidation"/>
+                    <include name="invalidEmailAndPassword"/>
+                </methods>
+            </class>
+        </classes>
+</test>
+</suite>
