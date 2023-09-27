@@ -1,11 +1,12 @@
 package Tests;
 
 import TestComponents.BaseTest;
+import Utilites.Retry;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
 public class LoginPageNegativeValidation extends BaseTest {
-    @Test(groups = {"errorValidation"})
+    @Test(groups = {"errorValidation"},retryAnalyzer = Retry.class)
     public void invalidEmailValidation(){
         loginPage.loginFeacture("3423","3234");
 

@@ -12,7 +12,9 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.testng.annotations.AfterMethod;
+import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.BeforeSuite;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -58,7 +60,7 @@ public class BaseTest  {
 
         return driver;
     }
-    @BeforeMethod(alwaysRun = true)
+
     public LoginPage launchApplication() throws IOException {
         driver = initializeDriver();
         loginPage = new LoginPage(driver);
@@ -83,7 +85,7 @@ public class BaseTest  {
         return System.getProperty("user.dir")+"\\reports\\"+testCaseName+".png";
     }
 
-    @AfterMethod(alwaysRun = true)
+    @AfterSuite(alwaysRun = true)
     public void tearDown(){
         driver.close();
     }
