@@ -29,8 +29,8 @@ public class AutoReplyTest extends BaseTest {
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.linkText("登录")));
         driver.findElement(By.linkText("登录")).click();
 
-        driver.findElement(By.id("username")).sendKeys("kellycc677@gmail.com");
-        driver.findElement(By.id("password")).sendKeys("Z1x2c3v4");
+        driver.findElement(By.id("username")).sendKeys("xxxxx@gmail.com");
+        driver.findElement(By.id("password")).sendKeys("xxxxxxxx");
         driver.findElement(By.id("rememberPasswd")).click();
         driver.findElement(By.id("agreePolicy")).click();
         driver.findElement(By.id("btnLoginAct")).click();
