@@ -1,6 +1,7 @@
 package PageObjects;
 
-import Utilites.CommonFunction;
+
+import Utilites.Wait;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -8,7 +9,7 @@ import org.openqa.selenium.support.PageFactory;
 
 import java.util.List;
 
-public class OrderPage extends CommonFunction {
+public class OrderPage extends Wait {
 
     WebDriver driver;
 
@@ -19,7 +20,7 @@ public class OrderPage extends CommonFunction {
     WebElement checkoutEle;
 
     public OrderPage(WebDriver driver){
-        super(driver);
+
         this.driver = driver;
         PageFactory.initElements(driver,this);
     }

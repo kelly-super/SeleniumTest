@@ -1,15 +1,16 @@
 package PageObjects;
 
-import Utilites.CommonFunction;
+
+import Utilites.Wait;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-public class  LoginPage extends CommonFunction {
+public class  LoginPage extends Wait {
     WebDriver driver;
     public LoginPage(WebDriver driver){
-        super(driver);
+
         this.driver = driver;
         PageFactory.initElements(driver,this);
     }
@@ -34,7 +35,7 @@ public class  LoginPage extends CommonFunction {
     }
 
     public String getErrorMessage(){
-        waitForElementToAppear(errorMessage);
+        waitForElementToBeVisible(driver,errorMessage);
         return errorMessage.getText();
     }
     public void forgotPasswordFeacture(){

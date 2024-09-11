@@ -12,37 +12,37 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
 
-public class CommonFunction {
+public class Wait {
 
-    WebDriver driver;
-    public CommonFunction(WebDriver driver) {
+   /* WebDriver driver;
+    public Wait(WebDriver driver) {
         this.driver = driver;
         PageFactory.initElements(driver,this);
-    }
+    }*/
 
     //the cart function in the header
-    @FindBy(css="[routerlink*='cart']")
+   /* @FindBy(css="[routerlink*='cart']")
     WebElement cartHeader;
 
     //the order function in the header
     @FindBy(css="[routerlink*='order']")
-    WebElement orderHeader;
+    WebElement orderHeader;*/
 
-    public void waitForElementToAppear(By findBy){
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(3));
+    public static void waitForElementToBeVisible(WebDriver driver,By findBy){
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
         wait.until(ExpectedConditions.visibilityOfElementLocated(findBy));
     }
-    public void waitForElementToAppear(WebElement element){
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(3));
+    public static void waitForElementToBeVisible(WebDriver driver,WebElement element){
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
         wait.until(ExpectedConditions.visibilityOf(element));
     }
 
-    public void waitForElementToDisappear(WebElement elemet) throws InterruptedException {
-      //  WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-      //  wait.until(ExpectedConditions.invisibilityOf(elemet));
-        Thread.sleep(1000);
+    public static void waitForElementToDisappear(WebDriver driver,WebElement elemet) throws InterruptedException {
+      WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+      wait.until(ExpectedConditions.invisibilityOf(elemet));
+      Thread.sleep(1000);
     }
-    public  CartPage goToCart(){
+    /*public  CartPage goToCart(){
         cartHeader.click();
         CartPage cartPage = new CartPage(driver);
         return cartPage;
@@ -52,5 +52,5 @@ public class CommonFunction {
         orderHeader.click();
         OrderPage orderPage = new OrderPage(driver);
         return orderPage;
-    }
+    }*/
 }
