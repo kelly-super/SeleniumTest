@@ -1,6 +1,7 @@
 package PageObjects;
 
-import Utilites.CommonFunction;
+
+import Utilites.Wait;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -8,11 +9,11 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-public class CheckoutPage extends CommonFunction {
+public class CheckoutPage extends Wait {
     WebDriver driver;
 
     public CheckoutPage(WebDriver driver){
-        super(driver);
+
         this.driver = driver;
         PageFactory.initElements(driver,this);
     }
@@ -31,7 +32,7 @@ public class CheckoutPage extends CommonFunction {
     public void setSelectCountry(String countryName){
          Actions s = new Actions(driver);
          s.sendKeys(country,countryName).build().perform();
-         waitForElementToAppear(results);
+         waitForElementToBeVisible(driver,results);
          selectCountry.click();
     }
     public  ConfirmationPage submitOrder(){

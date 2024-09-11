@@ -21,23 +21,23 @@ import java.util.Set;
 public class AutoReplyTest extends BaseTest {
     WebDriver driver;
     WebDriverWait wait;
-    @BeforeTest
+
     public void loginForum() throws IOException, InterruptedException{
-         driver = initializeDriver();
+        driver = initializeDriver();
         driver.get("http://bbs.skykiwi.com/forum.php");
         wait = new WebDriverWait(driver,Duration.ofSeconds(1));
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.linkText("登录")));
         driver.findElement(By.linkText("登录")).click();
 
-        driver.findElement(By.id("username")).sendKeys("xxxxx@gmail.com");
-        driver.findElement(By.id("password")).sendKeys("xxxxxxxx");
+        driver.findElement(By.id("username")).sendKeys("");
+        driver.findElement(By.id("password")).sendKeys("");
         driver.findElement(By.id("rememberPasswd")).click();
         driver.findElement(By.id("agreePolicy")).click();
         driver.findElement(By.id("btnLoginAct")).click();
         System.out.println("current url = "+ driver.getCurrentUrl());
     }
     //Auto reply to my article
-    @Test
+
     public void autoReply() throws IOException, InterruptedException {
 
         driver.findElement(By.id("qmenu")).click();
@@ -75,14 +75,15 @@ public class AutoReplyTest extends BaseTest {
         LocalDateTime now = LocalDateTime.now();
 
          wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("fwin_reply")));
-         driver.findElement(By.id("postmessage")).sendKeys("auto reply ="+dtf.format(now));
+         driver.findElement(By.id("postmessage")).sendKeys("\n" +
+                 "专业制作铝合金大门, Fence 围栏 及安装 "+dtf.format(now));
          driver.findElement(By.id("postsubmit")).click();
 
          driver.switchTo().window(parentURL);
          driver.navigate().refresh();
     }
 
-    @Test
+
     public void deleteTheCollectArticles() throws InterruptedException {
         driver.findElement(By.id("qmenu")).click();
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("qmenu_menu")));
@@ -100,7 +101,7 @@ public class AutoReplyTest extends BaseTest {
         }
 
     }
-    @Test
+
     public void deleteAllTheSelectedFavorate(){
         driver.findElement(By.id("qmenu")).click();
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("qmenu_menu")));

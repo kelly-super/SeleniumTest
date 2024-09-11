@@ -19,6 +19,7 @@ import org.testng.annotations.BeforeSuite;
 
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.time.Duration;
@@ -31,30 +32,43 @@ public class BaseTest  {
     public WebDriver driver;
     public LoginPage loginPage;
     public GlobalObject globalObject;
+    public static Properties properties;
+
+    public Properties getProperties()throws IOException {
+
+        if( properties==null)
+        {
+            properties = new Properties();
+            FileInputStream fis = new FileInputStream("src/main/resources/GlobalData.properties");
+            properties.load(fis);
+        }
+        return properties;
+
+    }
 
     public WebDriver initializeDriver() throws IOException {
-        Properties prop = new Properties();
-        FileInputStream fis = new FileInputStream("src/main/resources/GlobalData.properties");
-        prop.load(fis);
+        Properties prop =getProperties();
         String browserName = prop.getProperty("browser");
         String url = prop.getProperty("url");
         String userEmail = prop.getProperty("userEmail");
         String password = prop.getProperty("password");
-        globalObject = new GlobalObject();
-        globalObject.setBrowser(browserName);
-        globalObject.setUrl(url);
-        globalObject.setUserEmail(userEmail);
-        globalObject.setPassword(password);
+//        String chromepath = prop.getProperty("chromepath");
+//        System.setProperty("webdriver.chrome.driver",chromepath);
+//        globalObject = new GlobalObject();
+//        globalObject.setBrowser(browserName);
+//        globalObject.setUrl(url);
+//        globalObject.setUserEmail(userEmail);
+//        globalObject.setPassword(password);
 
         if(browserName.contains("chrome")){
 
-            ChromeOptions options = new ChromeOptions();
+//            ChromeOptions options = new ChromeOptions();
+//           // WebDriverManager.chromedriver().setup();
+//            if(browserName.contains("headless")){
+//                options.addArguments("headless");
+//            }
             WebDriverManager.chromedriver().setup();
-            if(browserName.contains("headless")){
-                options.addArguments("headless");
-            }
-
-            driver = new ChromeDriver(options);
+            driver = new ChromeDriver();
 
         }else if(browserName.equalsIgnoreCase("firefox")){
 
@@ -94,7 +108,7 @@ public class BaseTest  {
 
     @AfterSuite(alwaysRun = true)
     public void tearDown(){
-        driver.close();
+     //  driver.quit();
     }
 
 }
